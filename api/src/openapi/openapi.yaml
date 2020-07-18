@@ -1,0 +1,105 @@
+openapi: 3.0.1
+
+info:
+  description: Auto rotate an image using RotNet
+  version: '1.0'
+  title: AutoRotate API
+  contact:
+    email: hi@asuarez.dev
+
+servers:
+  - url: https://api.autorotate.asuarez.dev
+    description: Production endpoint.
+  - url: http://localhost:8092
+    description: Local endpoint.
+
+tags:
+  - name: image
+    description: endpoint for processing images.
+    x-displayName: Image
+
+paths:
+  /rotate:
+    post:
+      tags:
+        - image
+      summary: Rotate an image given its URL or the image itself.
+      description: Invoke this endpoint to rotate an image.
+      operationId: src.api.rotate.post
+      requestBody:
+        $ref: '#/components/requestBodies/Rotate'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        default:
+          $ref: '#/components/responses/Error'
+
+components:
+
+  requestBodies:
+
+    Rotate:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              image_url:
+                $ref: '#/components/schemas/ImageURL'
+              image_base64:
+                $ref: '#/components/schemas/ImageBase64'
+
+  responses:
+
+    Success:
+      description: Successfully request proccesed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                $ref: '#/components/schemas/Error'
+              message:
+                $ref: '#/components/schemas/Message'
+              response:
+                $ref: '#/components/schemas/Response'
+
+    Error:
+      description: Error response with some information about.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                $ref: '#/components/schemas/Message'
+
+  schemas:
+
+    ImageURL:
+      type: string
+      description: Internet accessible URL of an image.
+      example: https://example.com/image.jpg
+
+    ImageBase64:
+      type: string
+      description: URL and filename - safe base64(url) encoded image.
+
+    Error:
+      type: boolean
+      description: True or False depending on the status of the response.
+      example: false
+
+    Message:
+      type: string
+      description: Useful information (hopefully) about request.
+      example: Message
+
+    Response:
+      type: object
+      description: Response content.
+      properties:
+        image_base64:
+          $ref: '#/components/schemas/ImageBase64'
