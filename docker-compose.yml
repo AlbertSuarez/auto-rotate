@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+
+  auto_rotate:
+    image: auto_rotate
+    container_name: auto_rotate
+    build: api
+    networks:
+      - auto_rotate
+    ports:
+      - 8092:8092
+    restart: always
+
+networks:
+  auto_rotate:
+    name: auto_rotate
+    driver: bridge
