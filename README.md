@@ -73,7 +73,7 @@ Rotate an image given its URL or the image itself.
 ##### Request example
 
 ```bash
-curl -d '{"image_url": URL}' -H "Content-Type: application/json" -X POST https://api.autorotate.asuarez.dev/rotate
+curl -d '{"image_url": URL}' -H "Content-Type: application/json" -X POST https://public-endpoint.com/rotate
 ```
 
 ##### Response example
