@@ -7,9 +7,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/AlbertSuarez/auto-rotate.svg)](https://GitHub.com/AlbertSuarez/auto-rotate/network/)
 [![GitHub license](https://img.shields.io/github/license/AlbertSuarez/auto-rotate.svg)](https://github.com/AlbertSuarez/auto-rotate/blob/master/LICENSE)
 
-[Demo](https://autorotate.asuarez.dev/) | [API Documentation](https://api.autorotate.asuarez.dev/docs)
-
-🔁 Full application for auto-rotating images using [RotNet](https://github.com/d4nst/RotNet).
+🔁 (Work in Progress Project) Full application for auto-rotating images using [RotNet](https://github.com/d4nst/RotNet).
 
 ## Motivation
 
